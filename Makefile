@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall
 DFLAGS = $(CFLAGS) -g
-LDFLAGS =
+LDFLAGS = -lcurl
 
 SOURCES = scraper.c
 OBJECTS = $(SOURCES:.c=.o)
