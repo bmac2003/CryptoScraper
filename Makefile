@@ -1,25 +1,33 @@
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -Wextra -I./include
 DFLAGS = $(CFLAGS) -g
 LDFLAGS = -lcurl
 
-SOURCES = scraper.c
-OBJECTS = $(SOURCES:.c=.o)
-EXECUTABLE = scraper
-HEADERS = $(wildcard *.h)
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR = build
 
-all: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
+TARGET = scraper
+HEADERS = include/$(wildcard *.h)
 
-%.o: %.c $(HEADERS)
+all: $(BUILD_DIR) $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-debug: $(OBJECTS)
-	$(CC) $(DFLAGS) $(OBJECTS) -o $(EXECUTABLE) $(LDFLAGS)
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+# debug: $(OBJECTS)
+# 	$(CC) $(DFLAGS) $(OBJECTS) -o $(EXECUTABLE) $(LDFLAGS)
 
 clean:
-	rm -f $(OBJECTS) $(EXECUTABLE)
+	rm -rf $(BUILD_DIR) $(TARGET)
 
 .PHONY: all clean
