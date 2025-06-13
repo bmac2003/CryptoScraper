@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/botCreator_test.dir/link.d CMakeFiles/botCreator_test.dir/src/botCreator.c.o CMakeFiles/botCreator_test.dir/test/botCreator.test.c.o -o botCreator_test  /usr/lib/libcurl.so -lxml2

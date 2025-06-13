@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/CryptoScraper.dir/link.d CMakeFiles/CryptoScraper.dir/src/botCreator.c.o CMakeFiles/CryptoScraper.dir/src/getUrlData.c.o -o CryptoScraper  /usr/lib/libcurl.so -lxml2

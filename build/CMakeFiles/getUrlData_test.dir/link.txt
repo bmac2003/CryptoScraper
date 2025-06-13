@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/getUrlData_test.dir/link.d CMakeFiles/getUrlData_test.dir/src/getUrlData.c.o CMakeFiles/getUrlData_test.dir/test/getUrlData.test.c.o -o getUrlData_test  /usr/lib/libcurl.so -lxml2
