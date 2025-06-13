@@ -1,7 +1,0 @@
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/CryptoScraper.dir
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/botCreator_test.dir
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/run_botCreator_test.dir
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/getUrlData_test.dir
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/run_getUrlData_test.dir
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/edit_cache.dir
-/home/btmcl/Desktop/CryptoScraper/build/CMakeFiles/rebuild_cache.dir

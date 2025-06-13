@@ -1,5 +1,5 @@
-#ifndef SCRAPER_H
-#define SCRAPER_H
+#ifndef GETURLDATA_H
+#define GETURLDATA_H
 
 #include <stdlib.h>
 #include <curl/curl.h>

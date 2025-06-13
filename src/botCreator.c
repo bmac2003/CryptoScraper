@@ -12,21 +12,20 @@
 #include <libxml/HTMLparser.h>
 #include <libxml/xpath.h>
 
-#include "getUrlData.h"
 #include "botCreator.h"
+#include "getUrlData.h"
 
 #define MAX_ACCOUNTS 5
 #define TWITTER_SIGNUP_URL "https://twitter.com/i/flow/signup"
 #define TWITTER_THREAD_URL "https://twitter.com/username/status/thread_id"
 
-
 // Create a new Twitter account (simplified, no CAPTCHA)
-void create_account(struct Account *account, int index) {
+void createAccount(struct Account *account, int index) {
     CURL *curl;
     CURLcode res;
-    struct MemoryStruct chunk = {0};
-    chunk.memory = malloc(1);
-    chunk.size = 0;
+    struct CURLResponse response = {0};
+    response.html = malloc(1);
+    response.size = 0;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
@@ -44,8 +43,8 @@ void create_account(struct Account *account, int index) {
 
         curl_easy_setopt(curl, CURLOPT_URL, TWITTER_SIGNUP_URL);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_data);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteHTMLCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&response);
 
         res = curl_easy_perform(curl);
         if (res != CURLE_OK) {
@@ -57,7 +56,7 @@ void create_account(struct Account *account, int index) {
         }
 
         curl_easy_cleanup(curl);
-        free(chunk.memory);
+        free(response.html);
     }
     curl_global_cleanup();
 }

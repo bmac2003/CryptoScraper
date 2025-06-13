@@ -1,5 +1,5 @@
-#ifndef SCRAPER_H
-#define SCRAPER_H
+#ifndef BOTCREATOR_H
+#define BOTCREATOR_H
 
 #include <stdlib.h>
 
@@ -10,5 +10,7 @@ struct Account {
     char password[50];
     char session_token[100]; // Placeholder for session/auth token
 };
+
+void createAccount(struct Account *account, int index);
 
 #endif

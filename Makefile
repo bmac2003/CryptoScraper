@@ -6,7 +6,7 @@ LDFLAGS = -lcurl
 SRC_DIR = src
 INC_DIR = include
 BUILD_DIR = build
-TEST_DIR = tests
+TEST_DIR = test
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
