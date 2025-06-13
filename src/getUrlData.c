@@ -13,11 +13,7 @@
 #include <libxml/HTMLparser.h>
 #include <libxml/xpath.h>
 
-#include "scraper.h"
-
-#define MAX_ACCOUNTS 5
-#define TWITTER_SIGNUP_URL "https://twitter.com/i/flow/signup"
-#define TWITTER_THREAD_URL "https://twitter.com/username/status/thread_id"
+#include "getUrlData.h"
 
 size_t WriteHTMLCallback(void *contents, size_t size, size_t nmemb, void *userp) {
     size_t realsize = size * nmemb;
