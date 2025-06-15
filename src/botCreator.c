@@ -15,10 +15,6 @@
 #include "botCreator.h"
 #include "getUrlData.h"
 
-#define MAX_ACCOUNTS 5
-#define TWITTER_SIGNUP_URL "https://twitter.com/i/flow/signup"
-#define TWITTER_THREAD_URL "https://twitter.com/username/status/thread_id"
-
 // Create a new Twitter account (simplified, no CAPTCHA)
 void createAccount(struct Account *account, int index) {
     CURL *curl;

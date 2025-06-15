@@ -3,6 +3,10 @@
 
 #include <stdlib.h>
 
+#define MAX_ACCOUNTS 5
+#define TWITTER_SIGNUP_URL "https://twitter.com/i/flow/signup"
+#define TWITTER_THREAD_URL "https://twitter.com/username/status/thread_id"
+
 // Structure to store account credentials
 struct Account {
     char username[50];

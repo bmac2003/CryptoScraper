@@ -3,7 +3,7 @@
 #include "getUrlData.h"
 
 int main() {
-    printf("Hello World!\n");
+    // printf("Hello World!\n");
 
     // Initialize CURL globally
     curl_global_init(CURL_GLOBAL_ALL);

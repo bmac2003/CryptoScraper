@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "botCreator.c"
+#include "botCreator.h"
 
 int main() {
     struct Account accounts[MAX_ACCOUNTS];
