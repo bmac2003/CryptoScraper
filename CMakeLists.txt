@@ -5,6 +5,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
+set(UTILS_DIR ${CMAKE_SOURCE_DIR}/${SRC_DIR}/src)
 set(INC_DIR ${CMAKE_SOURCE_DIR}/include)
 set(TEST_DIR ${CMAKE_SOURCE_DIR}/tests)
 set(BUILD_DIR ${CMAKE_BINARY_DIR})
@@ -18,17 +19,30 @@ pkg_check_modules(LIBXML2 REQUIRED libxml-2.0)
 include_directories(${INC_DIR} ${LIBXML2_INCLUDE_DIRS})
 
 # Manually specify source and test files to avoid glob pitfalls
-set(SOURCES
-    ${SRC_DIR}/main.c
-    ${SRC_DIR}/getUrlData.c
-    ${SRC_DIR}/botCreator.c
-)
-set(TEST_SOURCES
-    ${TEST_DIR}/getUrlData.test.c
-    ${TEST_DIR}/botCreator.test.c
-)
+# set(SOURCES
+#     ${SRC_DIR}/main.c
+#     ${SRC_DIR}/getUrlData.c
+#     ${SRC_DIR}/botCreator.c
+# )
+# set(TEST_SOURCES
+#     ${TEST_DIR}/getUrlData.test.c
+#     ${TEST_DIR}/botCreator.test.c
+# )
+
+# Automatically detect source files
+file(GLOB SOURCES ${SRC_DIR}/*.c)
+file(GLOB UTIL_SOURCES ${UTIL_DIR}/*.c)
+file(GLOB TEST_SOURCES ${TEST_DIR}/*.test.c)
+
+# Separate main.c from other sources
+list(FILTER SOURCES EXCLUDE REGEX "main.c")
+set(MODULES ${SOURCES} ${UTIL_SOURCES})
+
+# Ensure main.c is included for the executable
+list(APPEND SOURCES ${SRC_DIR}/main.c)
 
 message("Sources: ${SOURCES}")
+message("Modules: ${MODULES}")
 message("Test Sources: ${TEST_SOURCES}")
 
 # Main executable
